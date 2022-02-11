@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+    font-family: Roboto;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+}
+
+.main {
+    height: 62vh;
+    width: 50vh;
+    background-color: #f2f2f2;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vh;
+}
+.display {
+    width: 40vh;
+    height: 12vh;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-calc {
+    flex: 1;
+}
+
+.display-result {
+    flex: 1.5;
+}
+
+.clear {
+    background-color: #3333ff;
+    color: white;
+}
+
+.delete {
+    background-color: #ff3385;
+    color: white;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+}
+
+.key-row {
+    display:flex;
+    justify-content: space-evenly;
+    gap: 3.5vh;
+}
+
+.key {
+    height: 7vh;
+    width: 7vh;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: #737373;
+    color: white;
+}
+
+.special-key {
+    height: 7vh;
+    width: 18vh;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.operator-key {
+    font-size: 1.8em;
+}
