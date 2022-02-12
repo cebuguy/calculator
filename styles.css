@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
 }
 
 body{
@@ -75,6 +75,10 @@ body{
     color: white;
 }
 
+.key:hover {
+    background-color: #8c8c8c;
+}
+
 .special-key {
     height: 7vh;
     width: 18vh;
@@ -87,6 +91,18 @@ body{
     font-weight: 900;
 }
 
+.clear:hover {
+    background-color: #6666ff;
+}
+
+.delete:hover{
+    background-color: #ff66a3;
+}
+
 .operator-key {
     font-size: 1.8em;
+}
+
+.button-press {
+    scale:(1.1);
 }
