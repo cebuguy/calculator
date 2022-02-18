@@ -11,39 +11,40 @@
 <body>
     <div class="main">
         <div class="display">
-            <div class="display-calc"></div>
-            <div class="display-result"></div>
+            <div class="calc"></div>
+            <div class="value">Nice.</div>
         </div>
         <div class="keypad">
             <div class="key-row row-five">
-                <div class="special-key clear">Clear</div>
-                <div class="special-key delete">Delete</div>
+                <div data-key="Delete" class="special-key clear">Clear</div>
+                <div data-key="Backspace" class="special-key delete">Delete</div>
             </div>
             <div class="key-row row-four">
-                <div class="key key7">7</div>
-                <div class="key key8">8</div>
-                <div class="key key9">9</div>
-                <div class="key operator-key key-divide">÷</div>
+                <div data-key="7" class="key">7</div>
+                <div data-key="8" class="key">8</div>
+                <div data-key="9" class="key">9</div>
+                <div data-key="/" class="key operator-key">÷</div>
             </div>
             <div class="key-row row-three">
-                <div class="key key4">4</div>
-                <div class="key key5">5</div>
-                <div class="key key6">6</div>
-                <div class="key operator-key key-multiply">×</div>
+                <div data-key="4" class="key">4</div>
+                <div data-key="5" class="key">5</div>
+                <div data-key="6" class="key">6</div>
+                <div data-key="*"class="key operator-key">×</div>
             </div>
             <div class="key-row row-two">
-                <div class="key key1">1</div>
-                <div class="key key2">2</div>
-                <div class="key key3">3</div>
-                <div class="key operator-key key-minus">−</div>
+                <div data-key="1" class="key">1</div>
+                <div data-key="2" class="key">2</div>
+                <div data-key="3" class="key">3</div>
+                <div data-key="-" class="key operator-key">−</div>
             </div>
             <div class="key-row row-one">
-                <div class="key key0">0</div>
-                <div class="key operator-key key-decimal">.</div>
-                <div class="key operator-key key-equal">=</div>
-                <div class="key operator-key key-plus">+</div>  
+                <div data-key="0" class="key">0</div>
+                <div data-key="." class="key">.</div>
+                <div data-key="=" class="key">=</div>
+                <div data-key="+"class="key operator-key">+</div>  
             </div>
         </div>
     </div>
 </body>
 </html>
+

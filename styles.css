@@ -29,14 +29,20 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: #ecffe6;
 }
 
-.display-calc {
+.calc {
     flex: 1;
 }
 
-.display-result {
+.value {
     flex: 1.5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    color: black;
 }
 
 .clear {
@@ -103,6 +109,8 @@ body{
     font-size: 1.8em;
 }
 
-.button-press {
-    scale:(1.1);
+.key-press {
+    transition: all 0.3s;
+    transform: scale(1.1);
+    font-size: 1.8em;
 }
