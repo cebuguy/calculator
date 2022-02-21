@@ -1,9 +1,10 @@
 //5 global variables needed
-let num1;
-let num2;
+let num1 = '';
+let num2 = '';
 let operator;
-let calcScreen = document.querySelector('.calc');
-let valueScreen = document.querySelector('.value');
+let result;
+const calcScreen = document.querySelector('.calc');
+const valueScreen = document.querySelector('.value');
 
 calcScreen.textContent = ''
 valueScreen.textContent = '0';
@@ -25,18 +26,27 @@ const divide = function(num1,num2) {
     return num1/num2;
 };
 
-const operate = function(num1,num2,operator) {
-    let sum = 0;
-    if(operator === '+') sum = add(num1,num2);
-    if(operator === '-') sum = subtract(num1,num2);
-    if(operator === '\\') sum = divide(num1,num2);
-    if(operator === '*') sum = multiply(num1,num2);
-    displayValue(sum);
+const operate = function() {
+    if(operator === '+') result = add(+num1,+num2);
+    if(operator === '-') result = subtract(+num1,+num2);
+    if(operator === '/') result = divide(+num1,+num2);
+    if(operator === '*') result = multiply(+num1,+num2);
+    valueScreen.textContent = result;
+    num1 = String(result);
+    num2 = '';
+    result = 0;
 };
 
-const displayValue = function(value) {
+const displayValue = function() {
     if(valueScreen.textContent === '0') valueScreen.textContent = '';
-    valueScreen.textContent += value;
+
+    if(!operator) valueScreen.textContent = num1;
+    else valueScreen.textContent = num2;
+
+    //condition if "Clear" is used
+    if(!num1 && !num2) {
+        valueScreen.textContent = '0';
+        }
 };
 
 const btnEffect = function(event) {
@@ -49,29 +59,28 @@ const removeBtnEffect = function(event) {
     event.target.classList.remove('key-press');
 };
 
-//store numbers and operator values
-const storeNumber = function(event) {
-    if(event.target.dataset.key === '+' || event.target.dataset.key === '-' || event.target.dataset.key === '/' || event.target.dataset.key === '*') {
-        num1 = +valueScreen.textContent;
-        operator = event.target.dataset.key;
-        valueScreen.textContent = '';
-    }
-}
+const storeOperator = function(opr) {
+    if(!operator) operator = opr.target.dataset.key;
+    if(operator && result === 0) operator = opr.target.dataset.key;
+    if(num1 && num2 && operator) operate();
+};
 
-const handleOperatorClick = function(event) {
-    if(operator) {
-        num2 = +valueScreen.textContent;
-        operate(num1,num2,operator);
-        return;
-    }
-    operator = event.target.dataset.key;
-    num1 = +valueScreen.textContent;
-    valueScreen.textContent = '';
-}
+const storeNumbers = function(event) {
+    if(!operator) num1 += event.target.dataset.key;
 
-const handleNumberClick = function(event) {
-    const keyValue = event.target.dataset.key;
-    displayValue(keyValue);    
+    if(operator) num2 += event.target.dataset.key;
+};
+
+const clearAll = function() {
+    num1 = '';
+    num2 = '';
+    operator = '';
+    result = 0;
+};
+
+const deletePrevious = function() {
+    if(!operator) num1 = num1.slice(0,-1);
+    if(operator) num2 = num2.slice(0,-1);
 }
 
 //declare DOM keys
@@ -81,8 +90,8 @@ const keyMultiply = document.querySelector('.key[data-key="*"]');
 const keyDivide = document.querySelector('.key[data-key="/"]');
 const keyEqual = document.querySelector('.key[data-key="="]');
 const keyDecimal = document.querySelector('.key[data-key="."]');
-const keyClear = document.querySelector('.key[data-key="Delete"]');
-const keyDelete = document.querySelector('.key[data-key="Backspace"]');
+const keyClear = document.querySelector('.clear');
+const keyDelete = document.querySelector('.delete');
 
 const key0 = document.querySelector('.key[data-key="0"]');
 const key1 = document.querySelector('.key[data-key="1"]');
@@ -95,24 +104,41 @@ const key7 = document.querySelector('.key[data-key="7"]');
 const key8 = document.querySelector('.key[data-key="8"]');
 const key9 = document.querySelector('.key[data-key="9"]');
 
-keyPlus.addEventListener('click',handleOperatorClick);
-keyMinus.addEventListener('click',handleOperatorClick);
-keyDivide.addEventListener('click',handleOperatorClick);
-keyMultiply.addEventListener('click',handleOperatorClick);
+key0.addEventListener('click', storeNumbers);
+key1.addEventListener('click', storeNumbers);
+key2.addEventListener('click', storeNumbers);
+key3.addEventListener('click', storeNumbers);
+key4.addEventListener('click', storeNumbers);
+key5.addEventListener('click', storeNumbers);
+key6.addEventListener('click', storeNumbers);
+key7.addEventListener('click', storeNumbers);
+key8.addEventListener('click', storeNumbers);
+key9.addEventListener('click', storeNumbers);
+keyDecimal.addEventListener('click', storeNumbers);
 
-key0.addEventListener('click', handleNumberClick);
-key1.addEventListener('click', handleNumberClick);
-key2.addEventListener('click', handleNumberClick);
-key3.addEventListener('click', handleNumberClick);
-key4.addEventListener('click', handleNumberClick);
-key5.addEventListener('click', handleNumberClick);
-key6.addEventListener('click', handleNumberClick);
-key7.addEventListener('click', handleNumberClick);
-key8.addEventListener('click', handleNumberClick);
-key9.addEventListener('click', handleNumberClick);
-keyDecimal.addEventListener('click', handleNumberClick);
+keyPlus.addEventListener('click',storeOperator);
+keyMinus.addEventListener('click',storeOperator);
+keyDivide.addEventListener('click',storeOperator);
+keyMultiply.addEventListener('click',storeOperator);
+
+key0.addEventListener('click', displayValue);
+key1.addEventListener('click', displayValue);
+key2.addEventListener('click', displayValue);
+key3.addEventListener('click', displayValue);
+key4.addEventListener('click', displayValue);
+key5.addEventListener('click', displayValue);
+key6.addEventListener('click', displayValue);
+key7.addEventListener('click', displayValue);
+key8.addEventListener('click', displayValue);
+key9.addEventListener('click', displayValue);
+keyDecimal.addEventListener('click', displayValue);
 
 keyEqual.addEventListener('click', operate);
+
+keyClear.addEventListener('click', clearAll);
+keyClear.addEventListener('click', displayValue);
+keyDelete.addEventListener('click', deletePrevious);
+keyDelete.addEventListener('click', displayValue);
 
 //button side affect for any button click
 document.addEventListener('click', btnEffect);
