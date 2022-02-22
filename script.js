@@ -144,14 +144,4 @@ keyDelete.addEventListener('click', displayValue);
 document.addEventListener('click', btnEffect);
 document.addEventListener('transitionend', removeBtnEffect);
 
-//events
-//document.addEventListener('click', operate);
-
-
-//document.addEventListener('click', keyPress);
-//document.addEventListener('click', storeNumber);
-//document.addEventListener('click', displayValue);
-//document.addEventListener('keydown', keyPress);
-
-//document.addEventListener('transitionend', removeKeyPress);
 
