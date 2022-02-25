@@ -40,8 +40,14 @@ const operate = function() {
 const displayValue = function() {
     if(valueScreen.textContent === '0') valueScreen.textContent = '';
 
-    if(!operator) valueScreen.textContent = num1;
-    else valueScreen.textContent = num2;
+    if(!operator) { 
+        valueScreen.textContent = num1;
+        calcScreen.textContent += `${num1} `;
+    }
+    else {
+        valueScreen.textContent = num2;
+        calcScreen.textContent += `${num2} `;
+    } 
 
     //condition if "Clear" is used
     if(!num1 && !num2) {
@@ -63,6 +69,7 @@ const storeOperator = function(opr) {
     if(!operator) operator = opr.target.dataset.key;
     if(operator && result === 0) operator = opr.target.dataset.key;
     if(num1 && num2 && operator) operate();
+    calcScreen.textContent += `${operator} `;
 };
 
 const storeNumbers = function(event) {
@@ -76,6 +83,7 @@ const clearAll = function() {
     num2 = '';
     operator = '';
     result = 0;
+    calcScreen.textContent = '';
 };
 
 const deletePrevious = function() {

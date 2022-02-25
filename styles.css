@@ -34,6 +34,8 @@ body{
 
 .calc {
     flex: 1;
+    margin-left: auto;
+    padding: 0.5em;
 }
 
 .value {
